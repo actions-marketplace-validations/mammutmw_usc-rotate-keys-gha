@@ -8,8 +8,6 @@ on:
     paths-ignore:
       - 'README.md'
 
-permissions: write-all
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -29,3 +27,4 @@ jobs:
           # arn:aws:iam::179942336946:user/usc-rotate-keys-gha
           aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          token: ${{secrets.PAT}} # PAT with repo write access

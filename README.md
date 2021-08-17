@@ -18,6 +18,7 @@ A Github action for rotating the keys for `usc`.
   with:
     aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    token: ${{secrets.PAT}} # PAT with repo write access
 
 
 # Rotate keys in current repo with changed names
@@ -28,6 +29,7 @@ A Github action for rotating the keys for `usc`.
     aws_secret_access_key: ${{secrets.USC_SECRET}}
     key: 'USC_KEY'
     secret: 'USC_SECRET'
+    token: ${{secrets.PAT}} # PAT with repo write access
 ```
 
 ### Example workflow
@@ -68,4 +70,4 @@ jobs:
 | key | The name of the key to update | AWS_ACCESS_KEY_ID |
 | secret | The name of the secret to update | AWS_SECRET_ACCESS_KEY |
 | project | The name of the repo with the secrets | current repo |
-| token | The github token to use | current GITHUB_TOKEN |
+| token | A Github Personal Access Token (PAT) | required |
