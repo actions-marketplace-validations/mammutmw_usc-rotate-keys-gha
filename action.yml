@@ -1,0 +1,43 @@
+---
+name: 'mammutmw/usc-rotate-keys-gha'
+description: 'Rotate keys with the upload service client'
+branding:
+  icon: 'upload'
+  color: 'pink'
+inputs:
+  aws_access_key:
+    description: 'The AWS_ACCESS_KEY_ID'
+    required: true
+  aws_secret_access_key:
+    description: 'The AWS_SECRET_ACCESS_KEY'
+    required: true
+  key:
+    description: 'The name of the key to update'
+    required: true
+    default: 'AWS_ACCESS_KEY_ID'
+  secret:
+    description: 'The name of the secret to update'
+    required: true
+    default: 'AWS_SECRET_ACCESS_KEY'
+  project:
+    description: 'The name of the repo with the secrets'
+    required: true
+    default: ${{github.repository}}
+  token:
+    description: 'The Github token'
+    required: true
+    default: ${{secrets.GITHUB_TOKEN}}
+
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/mammutmw/usc'
+  env:
+    AWS_ACCESS_KEY_ID: ${{inputs.aws_access_key}}
+    AWS_SECRET_ACCESS_KEY: ${{inputs.aws_secret_access_key}}
+  args:
+    - 'rotate-key'
+    - '--provider=github'
+    - '--key=${{inputs.key}}'
+    - '--secret=${{inputs.secret}}'
+    - '--project=${{inputs.project}}'
+    - '--token=${{inputs.token}}'
