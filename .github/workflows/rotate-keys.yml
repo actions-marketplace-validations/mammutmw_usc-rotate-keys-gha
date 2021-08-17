@@ -5,6 +5,8 @@ on:
     - cron: '0 11 1 */2 *'
   workflow_dispatch:
   push:
+    paths-ignore:
+      - 'README.md'
 
 jobs:
   build:

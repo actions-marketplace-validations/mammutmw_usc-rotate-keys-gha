@@ -14,7 +14,7 @@ A Github action for rotating the keys for `usc`.
 ```yaml
 # Rotate keys in current repo with default names
 - name: Rotate keys default names
-  uses: mammutmw/usc-rotate-keys-gha@v1.1.5
+  uses: mammutmw/usc-rotate-keys-gha@v1.0.0
   with:
     aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
@@ -22,7 +22,7 @@ A Github action for rotating the keys for `usc`.
 
 # Rotate keys in current repo with changed names
 - name: Rotate keys default names
-  uses: mammutmw/usc-rotate-keys-gha@v1.1.5
+  uses: mammutmw/usc-rotate-keys-gha@v1.0.0
   with:
     aws_access_key: ${{secrets.USC_KEY}}
     aws_secret_access_key: ${{secrets.USC_SECRET}}
@@ -35,7 +35,7 @@ A Github action for rotating the keys for `usc`.
 Here's a full example.
 
 ```yaml
-# .github/workflows/main.yml
+# .github/workflows/rotate-keys.yml
 name: Rotate keys
 on:
   schedule: # Run every other month
