@@ -6,7 +6,10 @@ A Github action for rotating the keys for `usc`.
 
 - Add an action below to your workflow.
 - Create a [Github Personal Access Token (PAT)](https://github.com/settings/tokens) with full repo access.
-- Add the required secrets, the AWS keys and the above PAT.
+- Add the required secrets (:gear:**Settings|Secrets**)
+  -  `AWS_ACCESS_KEY_ID`
+  -  `AWS_SECRET_ACCESS_KEY`
+  -  `PAT` (the above PAT)
 - If your names are different from the defaults change them.
 - Push it, then watch the Action tab on Github.
 
@@ -41,7 +44,7 @@ Here's a full example.
 # .github/workflows/rotate-keys.yml
 name: Rotate keys
 on:
-  schedule: # Run every other month
+  schedule: # Run every other month (the token is old after 90 days)
     - cron: '0 11 1 */2 *'
   workflow_dispatch: # Allow running from the UI
 
