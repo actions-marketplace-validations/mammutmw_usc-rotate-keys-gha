@@ -2,6 +2,9 @@
 
 A Github action for rotating the keys for `usc`.
 
+This currently only rotates the keys for a single repo. If you are using the
+keys in more than one project, you have to use a different approach.
+
 ## Setup
 
 - Add an action below to your workflow.
