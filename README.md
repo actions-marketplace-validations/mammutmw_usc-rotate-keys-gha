@@ -64,8 +64,8 @@ jobs:
 | Name | Description | Default |
 -------|-------------|----------|
 | aws_access_key | The AWS_ACCESS_KEY_ID | required |
-| aws_secret_access_key | 'The AWS_SECRET_ACCESS_KEY' | required |
-| key | 'The name of the key to update' | 'AWS_ACCESS_KEY_ID' |
-| secret | 'The name of the secret to update' | 'AWS_SECRET_ACCESS_KEY' |
-| project | 'The name of the repo with the secrets' | current repo |
-| token | 'The github token to use' | current GITHUB_TOKEN |
+| aws_secret_access_key | The AWS_SECRET_ACCESS_KEY | required |
+| key | The name of the key to update | AWS_ACCESS_KEY_ID |
+| secret | The name of the secret to update | AWS_SECRET_ACCESS_KEY |
+| project | The name of the repo with the secrets | current repo |
+| token | The github token to use | current GITHUB_TOKEN |
