@@ -43,7 +43,7 @@ name: Rotate keys
 on:
   schedule: # Run every other month
     - cron: '0 11 1 */2 *'
-  workflow_dispatch:
+  workflow_dispatch: # Allow running from the UI
 
 jobs:
   build:
