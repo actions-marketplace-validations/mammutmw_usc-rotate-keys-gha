@@ -5,7 +5,8 @@ A Github action for rotating the keys for `usc`.
 ## Setup
 
 - Add an action below to your workflow.
-- Add the required secrets, the AWS keys, to your Github project.
+- Create a [Github Personal Access Token (PAT)] (https://github.com/settings/tokens) with full repo access.
+- Add the required secrets, the AWS keys and the above PAT.
 - If your names are different from the defaults change them.
 - Push it, then watch the Action tab on Github.
 
