@@ -14,9 +14,12 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+        # Check out to get access to the local action.yml
+      - uses: actions/checkout@v2
+
         # Rotate keys
       - name: Rotate Keys
-        uses: ./action.yml
+        uses: ./
         with:
           # arn:aws:iam::179942336946:user/usc-rotate-keys-gha
           aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
