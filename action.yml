@@ -2,8 +2,8 @@
 name: 'mammutmw/usc-rotate-keys-gha'
 description: 'Rotate keys with the upload service client'
 branding:
-  icon: 'upload'
-  color: 'pink'
+  icon: 'rotate-cw'
+  color: 'purple'
 inputs:
   aws_access_key:
     description: 'The AWS_ACCESS_KEY_ID'
