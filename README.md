@@ -87,6 +87,5 @@ jobs:
 | aws_secret_access_key | The AWS_SECRET_ACCESS_KEY | required |
 | key | The name of the key to update | AWS_ACCESS_KEY_ID |
 | secret | The name of the secret to update | AWS_SECRET_ACCESS_KEY |
-| project | The name of the repo with the secrets or a comma separated list of
-multiple repos | current repo |
+| project | The name of the repo with the secrets or a comma separated list of multiple repos | current repo |
 | token | A Github Personal Access Token (PAT) | required |
