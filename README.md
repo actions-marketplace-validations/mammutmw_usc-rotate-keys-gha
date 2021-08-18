@@ -2,8 +2,9 @@
 
 A Github action for rotating the keys for `usc`.
 
-This currently only rotates the keys for a single repo. If you are using the
-keys in more than one project, you have to use a different approach.
+Default configuration only rotates the keys for current repo. If using
+the keys in more than one project, you must explicitly give a comma separated
+list of repos as `project:` arguments.
 
 ## Setup
 
@@ -37,6 +38,16 @@ keys in more than one project, you have to use a different approach.
     key: 'USC_KEY'
     secret: 'USC_SECRET'
     token: ${{secrets.PAT}} # PAT with repo write access
+
+# Rotate keys in multiple repos with default names
+- name: Rotate keys default names
+  uses: mammutmw/usc-rotate-keys-gha@v1.0.0
+  with:
+    aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
+    aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    token: ${{secrets.PAT}} # PAT with repo write access
+    project: 'owner/repo1,owner/repo2,owner/repo3'
+
 ```
 
 ### Example workflow
@@ -76,5 +87,6 @@ jobs:
 | aws_secret_access_key | The AWS_SECRET_ACCESS_KEY | required |
 | key | The name of the key to update | AWS_ACCESS_KEY_ID |
 | secret | The name of the secret to update | AWS_SECRET_ACCESS_KEY |
-| project | The name of the repo with the secrets | current repo |
+| project | The name of the repo with the secrets or a comma separated list of
+multiple repos | current repo |
 | token | A Github Personal Access Token (PAT) | required |
