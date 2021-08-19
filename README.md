@@ -2,22 +2,6 @@
 
 A Github action for rotating the keys for `usc`.
 
-Default configuration only rotates the keys for current repo. If using
-the keys in more than one project, you must explicitly give a comma separated
-list of repos as `project:` arguments.
-
-## Setup
-
-- Add an action below to your workflow.
-- Create a [Github Personal Access Token (PAT)](https://github.com/settings/tokens) with full repo access.
-- [Authorize the PAT for use with SAML single sign-on](https://docs.github.com/en/github/authenticating-to-github/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
-- Add the required secrets (:gear:**Settings|Secrets**):
-  -  `AWS_ACCESS_KEY_ID`
-  -  `AWS_SECRET_ACCESS_KEY`
-  -  `PAT` (the above PAT)
-- If your names are different from the defaults, change them.
-- Push it, then test the flow by manually triggering it.
-
 ## Example workflow
 
 Here's a full example.
@@ -45,9 +29,26 @@ jobs:
         with:
           aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          token: ${{secrets.PAT}} # PAT with full repo access and SSO
 ```
 
+## Setup
+
+- Add a workflow for rotating keys (example above).
+- Create a [Github Personal Access Token (PAT)](https://github.com/settings/tokens) with full repo access.
+- [Authorize the PAT for use with SAML single sign-on](https://docs.github.com/en/github/authenticating-to-github/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+- Add the required secrets (:gear:**Settings|Secrets**):
+  -  `AWS_ACCESS_KEY_ID`
+  -  `AWS_SECRET_ACCESS_KEY`
+  -  `PAT` (the above PAT)
+- If your names are different from the defaults, change them.
+- Push it, then test the flow by manually triggering it.
+
 ### Example Action Configurations
+
+Default configuration only rotates the keys for current repo. If using
+the keys in more than one project, you must explicitly give a comma separated
+list of repos as `project:` arguments (third example below).
 
 ```yaml
 # Rotate keys in current repo with default names
@@ -56,7 +57,7 @@ jobs:
   with:
     aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    token: ${{secrets.PAT}} # PAT with repo write access
+    token: ${{secrets.PAT}} # PAT with full repo access and SSO
 
 
 # Rotate keys in current repo with changed names
@@ -67,7 +68,7 @@ jobs:
     aws_secret_access_key: ${{secrets.USC_SECRET}}
     key: 'USC_KEY'
     secret: 'USC_SECRET'
-    token: ${{secrets.PAT}} # PAT with repo write access
+    token: ${{secrets.PAT}} # PAT with full repo access and SSO
 
 # Rotate keys in multiple repos with default names
 - name: Rotate keys default names
@@ -75,9 +76,8 @@ jobs:
   with:
     aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-    token: ${{secrets.PAT}} # PAT with repo write access
+    token: ${{secrets.PAT}} # PAT with full repo access and SSO
     project: 'owner/repo1,owner/repo2,owner/repo3'
-
 ```
 
 
