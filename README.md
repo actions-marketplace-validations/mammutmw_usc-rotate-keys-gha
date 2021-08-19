@@ -15,15 +15,9 @@ on:
   workflow_dispatch: # Allow running from the UI
 
 jobs:
-  build:
+  rotate:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context, for debugging
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-        # Rotate keys
       - name: Rotate Keys
         uses: mammutmw/usc-rotate-keys-gha@v1.0.0
         with:
@@ -79,7 +73,6 @@ list of repos as `project:` arguments (third example below).
     token: ${{secrets.PAT}} # PAT with full repo access and SSO
     project: 'owner/repo1,owner/repo2,owner/repo3'
 ```
-
 
 ### Parameters
 
