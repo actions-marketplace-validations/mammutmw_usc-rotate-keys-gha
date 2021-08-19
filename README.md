@@ -15,10 +15,39 @@ list of repos as `project:` arguments.
   -  `AWS_ACCESS_KEY_ID`
   -  `AWS_SECRET_ACCESS_KEY`
   -  `PAT` (the above PAT)
-- If your names are different from the defaults change them.
-- Push it, then watch the Action tab on Github.
+- If your names are different from the defaults, change them.
+- Push it, then test the flow by manually triggering it.
 
-### Action
+## Example workflow
+
+Here's a full example.
+
+```yaml
+# .github/workflows/rotate-keys.yml
+name: Rotate keys
+on:
+  schedule: # Run at 11:22 on the first every other month (the token is old after 90 days)
+    - cron: '22 11 1 */2 *'
+  workflow_dispatch: # Allow running from the UI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context, for debugging
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+        # Rotate keys
+      - name: Rotate Keys
+        uses: mammutmw/usc-rotate-keys-gha@v1.0.0
+        with:
+          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
+          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+```
+
+### Example Action Configurations
 
 ```yaml
 # Rotate keys in current repo with default names
@@ -51,34 +80,6 @@ list of repos as `project:` arguments.
 
 ```
 
-### Example workflow
-
-Here's a full example.
-
-```yaml
-# .github/workflows/rotate-keys.yml
-name: Rotate keys
-on:
-  schedule: # Run every other month (the token is old after 90 days)
-    - cron: '0 11 1 */2 *'
-  workflow_dispatch: # Allow running from the UI
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump GitHub context, for debugging
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-        # Rotate keys
-      - name: Rotate Keys
-        uses: mammutmw/usc-rotate-keys-gha@v1.0.0
-        with:
-          aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
-          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-```
 
 ### Parameters
 
