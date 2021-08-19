@@ -10,7 +10,8 @@ list of repos as `project:` arguments.
 
 - Add an action below to your workflow.
 - Create a [Github Personal Access Token (PAT)](https://github.com/settings/tokens) with full repo access.
-- Add the required secrets (:gear:**Settings|Secrets**)
+- Create a [Authorize the PAT for use with SAML single sign-on](https://docs.github.com/en/github/authenticating-to-github/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
+- Add the required secrets (:gear:**Settings|Secrets**):
   -  `AWS_ACCESS_KEY_ID`
   -  `AWS_SECRET_ACCESS_KEY`
   -  `PAT` (the above PAT)
