@@ -11,6 +11,10 @@ inputs:
   aws_secret_access_key:
     description: 'The AWS_SECRET_ACCESS_KEY'
     required: true
+  provider:
+    description: 'The provider, one of github, githuborg or cloudbuild'
+    required: true
+    default: github
   key:
     description: 'The name of the key to update'
     required: true
@@ -35,7 +39,7 @@ runs:
     AWS_SECRET_ACCESS_KEY: ${{inputs.aws_secret_access_key}}
   args:
     - 'rotate-key'
-    - '--provider=github'
+    - '--provider=${{inputs.provider}}'
     - '--key=${{inputs.key}}'
     - '--secret=${{inputs.secret}}'
     - '--project=${{inputs.project}}'
