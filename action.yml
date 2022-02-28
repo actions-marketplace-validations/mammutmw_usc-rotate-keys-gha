@@ -1,5 +1,5 @@
 ---
-name: 'mammutmw/usc-rotate-keys-gha'
+name: 'ingka-group-digital/usc-rotate-keys-gha'
 description: 'Rotate keys with the upload service client'
 branding:
   icon: 'rotate-cw'
