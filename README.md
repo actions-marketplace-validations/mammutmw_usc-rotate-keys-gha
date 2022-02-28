@@ -1,5 +1,7 @@
 # usc-rotate-keys-gha
 
+:warning: Deprecated, use to https://github.com/ingka-group-digital/usc-gha
+
 A Github action for rotating the keys for `usc`.
 
 ## Example workflow
