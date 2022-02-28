@@ -27,4 +27,5 @@ jobs:
           # arn:aws:iam::179942336946:user/usc-rotate-keys-gha
           aws_access_key: ${{secrets.AWS_ACCESS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+          # andersjanmyr/GHA_ROTATE_KEYS_PAT Full Repo and Org
           token: ${{secrets.PAT}} # PAT with repo write access
